@@ -1,0 +1,21 @@
+마이그레이션스는
+내가 배포한 파일들의 번호와 주소들을 저장한다
+지속적으로 배포할경우 마지막번호를 보고 그다음 번호를
+배포함  =   uint public last_completed_migration;
+
+
+트러플을 다시배포할때는 
+
+truffle migrate --reset 왜냐하면 번호대로 컴파일해서 배포하기때문
+
+
+트러플 콘솔 = node콘솔과 비슷한 환경
+트러플은 기본적으로 비동기식
+ㄴasync await 패턴을 사용 (찾아보기)
+
+contracts.deployed()는 abi를 리턴함
+abi 인터페이스 역할을 함
+
+
+erp721이란???
+컨트렉트 개발 표준 이렇게 작성해라 
