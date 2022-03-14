@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.4.22 <0.9.0;
 
 
 contract ERC721Metadata{
@@ -8,7 +8,7 @@ contract ERC721Metadata{
     string private _symbol;
     //이정보를 kbird 생성자에게 넘길꺼임
 
-    constructor(string memory named, string memory symbolified) {
+    constructor (string memory named, string memory symbolified)  public  {
         // string 은 변수로받을때 memory로 받아야한다.
         _name = named;
         _symbol = symbolified;
