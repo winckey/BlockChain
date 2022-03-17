@@ -14,8 +14,6 @@ module.exports = {
   compilers: {
     solc: {
      version:'^0.6.0',
-     AudioWorkleta,
-     
      optimizer:{
        enabled:'true',
        runs: 200

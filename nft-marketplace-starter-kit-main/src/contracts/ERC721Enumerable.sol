@@ -31,12 +31,12 @@ contract ERC721Enumerable is  ERC721 {
         // 모든 토큰을 관리한다.
 
         //토큰을 mint 하고 관리한다.
-        _addTokensToTotalSupply(tokenId); 
+        _addTokensToAllTokenEnumeration(tokenId); 
         _addTokensToOwnerEnumeration(to, tokenId);
     }
 
     // add tokens to the _alltokens array and set the position of the tokens indexes
-    function _addTokensToTotalSupply(uint256 tokenId) private {
+    function _addTokensToAllTokenEnumeration(uint256 tokenId) private {
         //mint에서 호출에서 저장할것임
 
         _allTokensIndex[tokenId] = _allTokens.length;
@@ -44,29 +44,40 @@ contract ERC721Enumerable is  ERC721 {
         _allTokens.push(tokenId);
         //토큰을 배열에 저장 
     }
-
+ 
     function _addTokensToOwnerEnumeration(address to, uint256 tokenId) private {
         // EXERCISE - CHALLENGE - DO THESE THREE THINGS:
         // 1. add address and token id to the _ownedTokens
         // 2. ownedTokensIndex tokenId set to address of 
         // ownedTokens position
         // 3. we want to execute the function with minting
+        //소유자의 인덱스에 토큰ID저장
         _ownedTokensIndex[tokenId] = _ownedTokens[to].length;
+        //소유자에게 토큰을 추가
         _ownedTokens[to].push(tokenId);   
+        //배열을 매핑해놓음 to를 쓰면 배열을 리턴하고있음
     }
 
     // two functions - one that returns tokenByIndex and 
     // another one that returns tokenOfOwnerByIndex
-    // function tokenByIndex(uint256 index) public override view returns(uint256) {
-    //     // make sure that the index is not out of bounds of the total supply 
-    //     require(index < totalSupply(), 'global index is out of bounds!');
-    //     return _allTokens[index];
-    // }
+    function tokenByIndex(uint256 index) public view returns(uint256) {
+        // 전체에서 index로 tokenid 반환
+        // make sure that the index is not out of bounds of the total supply 
+        require(index < totalSupply(), 'global index is out of bounds!');
+        // 범위 조건 검사
 
-    // function tokenOfOwnerByIndex(address owner, uint index) public override view returns(uint256) {
-    //     require(index < balanceOf(owner),'owner index is out of bounds!');
-    //     return _ownedTokens[owner][index];  
-    // }
+        // return 
+        return _allTokens[index];
+    }
+
+    function tokenOfOwnerByIndex(address owner, uint index) public view returns(uint256) {
+        // 주인배열에서 index로 tokenid 반환
+        // totalSupply() 이 아닌 balanceOf로 해당 계정만 확인
+        require(index < balanceOf(owner),'owner index is out of bounds!');
+        
+        return _ownedTokens[owner][index];  
+        //_ownedTokens[owner]배열에서(mapping(address => uint256[])) [index]번째
+    }
 
     // return the total supply of the _allTokens array
     function totalSupply() public view returns(uint256) {

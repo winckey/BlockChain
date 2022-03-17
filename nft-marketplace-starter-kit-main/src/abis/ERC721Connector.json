@@ -1,0 +1,714 @@
+{
+  "contractName": "ERC721Connector",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenOfOwnerByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenByIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"tokenOfOwnerByIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"balanceOf(address)\":{\"details\":\"NFTs assigned to zero address are considered invalid, and queries  about them do throw.\",\"params\":{\"_owner\":\"The identifier for an NFT\"},\"returns\":{\"_0\":\"The address of the owner of the NFT// \\uc774\\uac83\\ub4e4\\uba38\\uc784??\"}},\"ownerOf(uint256)\":{\"details\":\"NFTs assigned to zero address are considered invalid, and queries  about them do throw.\",\"params\":{\"_tokenId\":\"The identifier for an NFT\"},\"returns\":{\"_0\":\"The address of the owner of the NFT\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"balanceOf(address)\":{\"notice\":\"Find the owner of an NFT\"},\"ownerOf(uint256)\":{\"notice\":\"Find the owner of an NFT\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Connector.sol\":\"ERC721Connector\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721.sol\":{\"keccak256\":\"0x7f0c861bd3507f2c0796e9d56e91ee3101a4a3d17b8047af4a6c73d110aa22f3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f12e61cdb532501cbc5d3c7069dad92cb02cf87477211d8ab0af7eca55b66829\",\"dweb:/ipfs/QmVoJzc7b2579bKreq67dNHWFmdD53wLH4XL9pDSg8oQdT\"]},\"/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Connector.sol\":{\"keccak256\":\"0x1d95d618be22b9b40abf16adef3f3774b24cf6d001cbb9e4c5b2d8b648c76010\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c0429f216578107732dfff16efd5828ba56d8e9f29301cc75bd073b9a9b463ec\",\"dweb:/ipfs/QmVg8YGPqEdNwfjBpN6c1JVu1si1dY5xuv5GiLJHtaMyWm\"]},\"/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Enumerable.sol\":{\"keccak256\":\"0xb331d812cd8ac20c2b71e89d2a612ed8191e91691e107fb1588321e222f33dd0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc5cc4dd5eb10ac348be6e70bcca3e0b2a54b43f6b4752edea96663797a74fbb\",\"dweb:/ipfs/QmarW8Em1s7Tg4np7Nh3oCXuriyQuSpFGwcmhRBpTjBFEW\"]},\"/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Metadata.sol\":{\"keccak256\":\"0xcafd8d3aa53f6744f0c861d1fb754cfff0ca7de7b7b7558ec96254f6b404f022\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://979bc30453a6110cfefa4944e7fde67899a933d4fef52656807ec03a96aa7e18\",\"dweb:/ipfs/QmWqkK5eJWvWnejbX7nbSLQLcBADwVzE6ouNZP2cwDxvV3\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610a3c380380610a3c8339818101604052604081101561003357600080fd5b810190808051604051939291908464010000000082111561005357600080fd5b8382019150602082018581111561006957600080fd5b825186600182028301116401000000008211171561008657600080fd5b8083526020830192505050908051906020019080838360005b838110156100ba57808201518184015260208101905061009f565b50505050905090810190601f1680156100e75780820380516001836020036101000a031916815260200191505b506040526020018051604051939291908464010000000082111561010a57600080fd5b8382019150602082018581111561012057600080fd5b825186600182028301116401000000008211171561013d57600080fd5b8083526020830192505050908051906020019080838360005b83811015610171578082015181840152602081019050610156565b50505050905090810190601f16801561019e5780820380516001836020036101000a031916815260200191505b50604052505050818181600090805190602001906101bd9291906101de565b5080600190805190602001906101d49291906101de565b505050505061027b565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061021f57805160ff191683800117855561024d565b8280016001018555821561024d579182015b8281111561024c578251825591602001919060010190610231565b5b50905061025a919061025e565b5090565b5b8082111561027757600081600090555060010161025f565b5090565b6107b28061028a6000396000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c80634f6ccce71161005b5780634f6ccce7146101855780636352211e146101c757806370a082311461021f57806395d89b41146102775761007d565b806306fdde031461008257806318160ddd146101055780632f745c5914610123575b600080fd5b61008a6102fa565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100ca5780820151818401526020810190506100af565b50505050905090810190601f1680156100f75780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61010d61039c565b6040518082815260200191505060405180910390f35b61016f6004803603604081101561013957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506103a9565b6040518082815260200191505060405180910390f35b6101b16004803603602081101561019b57600080fd5b8101908080359060200190929190505050610485565b6040518082815260200191505060405180910390f35b6101f3600480360360208110156101dd57600080fd5b8101908080359060200190929190505050610522565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102616004803603602081101561023557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506105ea565b6040518082815260200191505060405180910390f35b61027f6106b8565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102bf5780820151818401526020810190506102a4565b50505050905090810190601f1680156102ec5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103925780601f1061036757610100808354040283529160200191610392565b820191906000526020600020905b81548152906001019060200180831161037557829003601f168201915b5050505050905090565b6000600580549050905090565b60006103b4836105ea565b8210610428576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f6f776e657220696e646578206973206f7574206f6620626f756e64732100000081525060200191505060405180910390fd5b600760008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020828154811061047257fe5b9060005260206000200154905092915050565b600061048f61039c565b8210610503576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601e8152602001807f676c6f62616c20696e646578206973206f7574206f6620626f756e647321000081525060200191505060405180910390fd5b6005828154811061051057fe5b90600052602060002001549050919050565b6000806002600084815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614156105e1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602281526020018061075b6022913960400191505060405180910390fd5b80915050919050565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff161415610671576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602281526020018061075b6022913960400191505060405180910390fd5b600360008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b606060018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107505780601f1061072557610100808354040283529160200191610750565b820191906000526020600020905b81548152906001019060200180831161073357829003601f168201915b505050505090509056fe6f776e657220717565727920666f72206e6f6e2d6578697374656e7420746f6b656ea26469706673582212208102b22793a19f302bd5efd8a5391af6bf17cc34eb215de6d47679be26dd042b64736f6c634300060c0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c80634f6ccce71161005b5780634f6ccce7146101855780636352211e146101c757806370a082311461021f57806395d89b41146102775761007d565b806306fdde031461008257806318160ddd146101055780632f745c5914610123575b600080fd5b61008a6102fa565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100ca5780820151818401526020810190506100af565b50505050905090810190601f1680156100f75780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61010d61039c565b6040518082815260200191505060405180910390f35b61016f6004803603604081101561013957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506103a9565b6040518082815260200191505060405180910390f35b6101b16004803603602081101561019b57600080fd5b8101908080359060200190929190505050610485565b6040518082815260200191505060405180910390f35b6101f3600480360360208110156101dd57600080fd5b8101908080359060200190929190505050610522565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102616004803603602081101561023557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506105ea565b6040518082815260200191505060405180910390f35b61027f6106b8565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102bf5780820151818401526020810190506102a4565b50505050905090810190601f1680156102ec5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103925780601f1061036757610100808354040283529160200191610392565b820191906000526020600020905b81548152906001019060200180831161037557829003601f168201915b5050505050905090565b6000600580549050905090565b60006103b4836105ea565b8210610428576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601d8152602001807f6f776e657220696e646578206973206f7574206f6620626f756e64732100000081525060200191505060405180910390fd5b600760008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020828154811061047257fe5b9060005260206000200154905092915050565b600061048f61039c565b8210610503576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601e8152602001807f676c6f62616c20696e646578206973206f7574206f6620626f756e647321000081525060200191505060405180910390fd5b6005828154811061051057fe5b90600052602060002001549050919050565b6000806002600084815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614156105e1576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602281526020018061075b6022913960400191505060405180910390fd5b80915050919050565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff161415610671576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602281526020018061075b6022913960400191505060405180910390fd5b600360008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b606060018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107505780601f1061072557610100808354040283529160200191610750565b820191906000526020600020905b81548152906001019060200180831161073357829003601f168201915b505050505090509056fe6f776e657220717565727920666f72206e6f6e2d6578697374656e7420746f6b656ea26469706673582212208102b22793a19f302bd5efd8a5391af6bf17cc34eb215de6d47679be26dd042b64736f6c634300060c0033",
+  "sourceMap": "131:267:1:-:0;;;286:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;365:4;371:6;362:5:3;354;:13;;;;;;;;;;;;:::i;:::-;;387:11;377:7;:21;;;;;;;;;;;;:::i;:::-;;206:208;;286:109:1;;131:267;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "131:267:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;420:209:3;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3110:93:2;;;:::i;:::-;;;;;;;;;;;;;;;;;;;2614:435;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;2249:359;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;2668:219:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;2206:203;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;635:82:3;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;420:209;458:13;617:5;610:12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;420:209;:::o;3110:93:2:-;3153:7;3179:10;:17;;;;3172:24;;3110:93;:::o;2614:435::-;2690:7;2852:16;2862:5;2852:9;:16::i;:::-;2844:5;:24;2836:65;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2927:12;:19;2940:5;2927:19;;;;;;;;;;;;;;;2947:5;2927:26;;;;;;;;;;;;;;;;2920:33;;2614:435;;;;:::o;2249:359::-;2306:7;2467:13;:11;:13::i;:::-;2459:5;:21;2451:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2584:10;2595:5;2584:17;;;;;;;;;;;;;;;;2577:24;;2249:359;;;:::o;2668:219:0:-;2726:7;2745:13;2761:11;:21;2773:8;2761:21;;;;;;;;;;;;;;;;;;;;;2745:37;;2817:1;2800:19;;:5;:19;;;;2792:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2875:5;2868:12;;;2668:219;;;:::o;2206:203::-;2262:7;2311:1;2293:20;;:6;:20;;;;2285:67;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2373:17;:25;2391:6;2373:25;;;;;;;;;;;;;;;;2366:32;;2206:203;;;:::o;635:82:3:-;675:13;703:7;696:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;635:82;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nimport './ERC721Metadata.sol';\nimport './ERC721Enumerable.sol';\n\ncontract ERC721Connector is ERC721Metadata , ERC721Enumerable {\n\n    // we deploy connector right away\n    // we want to carry the metadata info over\n\n    constructor (string memory name, string memory symbol)  public  ERC721Metadata(name, symbol) {\n        \n    }\n\n}",
+  "sourcePath": "C:\\SSAFY\\BlockChain\\nft-marketplace-starter-kit-main\\src\\contracts\\ERC721Connector.sol",
+  "ast": {
+    "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Connector.sol",
+    "exportedSymbols": {
+      "ERC721Connector": [
+        165
+      ]
+    },
+    "id": 166,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 146,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:1"
+      },
+      {
+        "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Metadata.sol",
+        "file": "./ERC721Metadata.sol",
+        "id": 147,
+        "nodeType": "ImportDirective",
+        "scope": 166,
+        "sourceUnit": 354,
+        "src": "66:30:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Enumerable.sol",
+        "file": "./ERC721Enumerable.sol",
+        "id": 148,
+        "nodeType": "ImportDirective",
+        "scope": 166,
+        "sourceUnit": 315,
+        "src": "97:32:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 149,
+              "name": "ERC721Metadata",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 353,
+              "src": "159:14:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Metadata_$353",
+                "typeString": "contract ERC721Metadata"
+              }
+            },
+            "id": 150,
+            "nodeType": "InheritanceSpecifier",
+            "src": "159:14:1"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 151,
+              "name": "ERC721Enumerable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 314,
+              "src": "176:16:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Enumerable_$314",
+                "typeString": "contract ERC721Enumerable"
+              }
+            },
+            "id": 152,
+            "nodeType": "InheritanceSpecifier",
+            "src": "176:16:1"
+          }
+        ],
+        "contractDependencies": [
+          144,
+          314,
+          353
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 165,
+        "linearizedBaseContracts": [
+          165,
+          314,
+          144,
+          353
+        ],
+        "name": "ERC721Connector",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 163,
+              "nodeType": "Block",
+              "src": "379:16:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 164,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 159,
+                    "name": "name",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 154,
+                    "src": "365:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 160,
+                    "name": "symbol",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 156,
+                    "src": "371:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  }
+                ],
+                "id": 161,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 158,
+                  "name": "ERC721Metadata",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 353,
+                  "src": "350:14:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_ERC721Metadata_$353_$",
+                    "typeString": "type(contract ERC721Metadata)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "350:28:1"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 157,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 154,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 164,
+                  "src": "299:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 153,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 156,
+                  "mutability": "mutable",
+                  "name": "symbol",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 164,
+                  "src": "319:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 155,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "319:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:42:1"
+            },
+            "returnParameters": {
+              "id": 162,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "379:0:1"
+            },
+            "scope": 165,
+            "src": "286:109:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 166,
+        "src": "131:267:1"
+      }
+    ],
+    "src": "32:366:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Connector.sol",
+    "exportedSymbols": {
+      "ERC721Connector": [
+        165
+      ]
+    },
+    "id": 166,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 146,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:1"
+      },
+      {
+        "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Metadata.sol",
+        "file": "./ERC721Metadata.sol",
+        "id": 147,
+        "nodeType": "ImportDirective",
+        "scope": 166,
+        "sourceUnit": 354,
+        "src": "66:30:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/SSAFY/BlockChain/nft-marketplace-starter-kit-main/src/contracts/ERC721Enumerable.sol",
+        "file": "./ERC721Enumerable.sol",
+        "id": 148,
+        "nodeType": "ImportDirective",
+        "scope": 166,
+        "sourceUnit": 315,
+        "src": "97:32:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 149,
+              "name": "ERC721Metadata",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 353,
+              "src": "159:14:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Metadata_$353",
+                "typeString": "contract ERC721Metadata"
+              }
+            },
+            "id": 150,
+            "nodeType": "InheritanceSpecifier",
+            "src": "159:14:1"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 151,
+              "name": "ERC721Enumerable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 314,
+              "src": "176:16:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721Enumerable_$314",
+                "typeString": "contract ERC721Enumerable"
+              }
+            },
+            "id": 152,
+            "nodeType": "InheritanceSpecifier",
+            "src": "176:16:1"
+          }
+        ],
+        "contractDependencies": [
+          144,
+          314,
+          353
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 165,
+        "linearizedBaseContracts": [
+          165,
+          314,
+          144,
+          353
+        ],
+        "name": "ERC721Connector",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 163,
+              "nodeType": "Block",
+              "src": "379:16:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 164,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 159,
+                    "name": "name",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 154,
+                    "src": "365:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 160,
+                    "name": "symbol",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 156,
+                    "src": "371:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  }
+                ],
+                "id": 161,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 158,
+                  "name": "ERC721Metadata",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 353,
+                  "src": "350:14:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_ERC721Metadata_$353_$",
+                    "typeString": "type(contract ERC721Metadata)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "350:28:1"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 157,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 154,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 164,
+                  "src": "299:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 153,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 156,
+                  "mutability": "mutable",
+                  "name": "symbol",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 164,
+                  "src": "319:20:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 155,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "319:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:42:1"
+            },
+            "returnParameters": {
+              "id": 162,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "379:0:1"
+            },
+            "scope": 165,
+            "src": "286:109:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 166,
+        "src": "131:267:1"
+      }
+    ],
+    "src": "32:366:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.20",
+  "updatedAt": "2022-03-14T23:57:08.933Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "balanceOf(address)": {
+        "details": "NFTs assigned to zero address are considered invalid, and queries  about them do throw.",
+        "params": {
+          "_owner": "The identifier for an NFT"
+        },
+        "returns": {
+          "_0": "The address of the owner of the NFT// 이것들머임??"
+        }
+      },
+      "ownerOf(uint256)": {
+        "details": "NFTs assigned to zero address are considered invalid, and queries  about them do throw.",
+        "params": {
+          "_tokenId": "The identifier for an NFT"
+        },
+        "returns": {
+          "_0": "The address of the owner of the NFT"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "balanceOf(address)": {
+        "notice": "Find the owner of an NFT"
+      },
+      "ownerOf(uint256)": {
+        "notice": "Find the owner of an NFT"
+      }
+    },
+    "version": 1
+  }
+}

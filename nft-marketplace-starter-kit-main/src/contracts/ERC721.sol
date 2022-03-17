@@ -37,6 +37,7 @@ contract ERC721{
 
     // Mapping from token id to approved addresses
     mapping(uint256 => address) private _tokenApprovals; 
+    // 매핑이 바뀔경우 그것을 추적하여야 한다.
 
 
     // EXERCISE: 1. REGISTER THE INTERFACE FOR THE ERC721 contract so that it includes
@@ -73,7 +74,7 @@ contract ERC721{
     ///  about them do throw.
     /// @param _tokenId The identifier for an NFT
     /// @return The address of the owner of the NFT
-    function ownerOf(uint256 _tokenId) external view returns (address) {
+    function ownerOf(uint256 _tokenId) public view returns (address) {
         address owner = _tokenOwner[_tokenId];
         require(owner != address(0), 'owner query for non-existent token');
         return owner;
@@ -139,33 +140,37 @@ contract ERC721{
 
 
 
-    // /// @notice Transfer ownership of an NFT 
-    // /// @dev Throws unless `msg.sender` is the current owner, an authorized
-    // ///  operator, or the approved address for this NFT. Throws if `_from` is
-    // ///  not the current owner. Throws if `_to` is the zero address. Throws if
-    // ///  `_tokenId` is not a valid NFT.
-    // /// @param _from The current owner of the NFT
-    // /// @param _to The new owner
-    // /// @param _tokenId The NFT to transfer
+    /// @notice Transfer ownership of an NFT 
+    /// @dev Throws unless `msg.sender` is the current owner, an authorized
+    ///  operator, or the approved address for this NFT. Throws if `_from` is
+    ///  not the current owner. Throws if `_to` is the zero address. Throws if
+    ///  `_tokenId` is not a valid NFT.
+    /// @param _from The current owner of the NFT
+    /// @param _to The new owner
+    /// @param _tokenId The NFT to transfer
 
-    // // this is not safe! 
-    // function _transferFrom(address _from, address _to, uint256 _tokenId) internal {
-    //     require(_to != address(0), 'Error - ERC721 Transfer to the zero address');
-    //     require(ownerOf(_tokenId) == _from, 'Trying to transfer a token the address does not own!');
+    // this is not safe! 
+    function _transferFrom(address _from, address _to, uint256 _tokenId) internal {
+        require(_to != address(0), 'Error - ERC721 Transfer to the zero address');
+        require(ownerOf(_tokenId) == _from, 'Trying to transfer a token the address does not own!');
 
-    //     _OwnedTokensCount[_from].decrement();
-    //     _OwnedTokensCount[_to].increment();
+        _OwnedTokensCount[_from] -=1;
+        //전송자의 총갯수 감소
+        _OwnedTokensCount[_to] +=1;
+        // 받은사람갯수 하나 증가
 
-    //     _tokenOwner[_tokenId] = _to;
 
-    //     emit Transfer(_from, _to, _tokenId);
-    // }
+        _tokenOwner[_tokenId] = _to;
+        //저장하려는 토큰 id의 소유자의 주소 를 to로 변경
 
-    // function transferFrom(address _from, address _to, uint256 _tokenId) override public {
-    //     require(isApprovedOrOwner(msg.sender, _tokenId));
-    //     _transferFrom(_from, _to, _tokenId);
+        emit transfer(_from, _to, _tokenId);
+    }
 
-    // }
+    function transferFrom(address _from, address _to, uint256 _tokenId) public {
+        require(isApprovedOrOwner(msg.sender, _tokenId));
+        _transferFrom(_from, _to, _tokenId);
+
+    }
 
     // // 1. require that the person approving is the owner
     // // 2. we are approving an address to a token (tokenId)
@@ -180,11 +185,11 @@ contract ERC721{
     //     emit Approval(owner, _to, tokenId);
     // } 
 
-    // function isApprovedOrOwner(address spender, uint256 tokenId) internal view returns(bool) {
-    //     require(_exists(tokenId), 'token does not exist');
-    //     address owner = ownerOf(tokenId);
-    //     return(spender == owner); 
-    // }
+    function isApprovedOrOwner(address spender, uint256 tokenId) internal view returns(bool) {
+        require(_exists(tokenId), 'token does not exist');
+        address owner = ownerOf(tokenId);
+        return(spender == owner); 
+    }
 
 }
 
