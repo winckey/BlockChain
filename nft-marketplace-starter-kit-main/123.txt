@@ -1,0 +1,14 @@
+** 이더리움 및 가스에 대한 이해
+1. 이더리움 설계 근거
+https://andybclee.wordpress.com/2017/03/28/%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%84%A4%EA%B3%84-%EA%B7%BC%EA%B1%B0/
+2. [이더리움] 가스와 수수료 체계
+https://steemit.com/kr/@feyee95/3c9stg
+3. Gas! Gas! Gas! ⛽ 가스비를 절약하는 방법
+https://tech.elysia.land/gas-gas-gas-%EA%B0%80%EC%8A%A4%EB%B9%84%EB%A5%BC-%EC%A0%88%EC%95%BD%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-b290fad2d089
+** 가스 가스에 대한 이해
+1. How to reduce gas cost in Solidity
+https://medium.com/layerx/how-to-reduce-gas-cost-in-solidity-f2e5321e0395
+2. Gas Optimization in Solidity Part I: Variables
+https://medium.com/coinmonks/gas-optimization-in-solidity-part-i-variables-9d5775e43dde
+3. Cool Cats NFT를 구축하면서 배운 것
+https://yozm.wishket.com/magazine/detail/1196/
